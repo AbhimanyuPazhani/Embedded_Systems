@@ -1,0 +1,6 @@
+08:08:30 **** Incremental Build of configuration Debug for project Lecture 79 Exercise ****
+Info: Internal Builder is used for build
+gcc -o "Lecture 79 Exercise.exe" main.o 
+
+08:08:31 Build Finished. 0 errors, 0 warnings. (took 347ms)
+

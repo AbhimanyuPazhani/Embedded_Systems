@@ -1,0 +1,36 @@
+/*
+ * main.c
+ *
+ *  Created on: Oct 6, 2025
+ *      Author: ADMIN
+ */
+
+
+#include<stdio.h>
+#include<stdint.h>
+
+void wait_for_input(void)
+{
+    printf("\nPress Enter to exit...");
+    while (getchar() != '\n');  // clear input buffer
+    getchar();                  // wait for Enter
+}
+
+//int main (void)
+//{
+//
+//	uint8_t data1 = 10;
+//	data1= 50;
+//	printf("The value of data1 is: %d", data1);
+//
+//	wait_for_input();
+//}
+
+
+int main(void)
+{
+	uint8_t const data1 = 10;
+	data1 = 50;
+	printf("The value of data1 is: %d", data1);
+	wait_fot_input();
+}

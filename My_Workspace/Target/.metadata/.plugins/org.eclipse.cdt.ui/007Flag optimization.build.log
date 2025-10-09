@@ -1,0 +1,17 @@
+16:41:06 **** Incremental Build of configuration Debug for project 007Flag optimization ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F722xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O2 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "007Flag optimization.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\Programs\Embedded C\My_Workspace\Target\007Flag optimization\STM32F722ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="007Flag optimization.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 007Flag optimization.elf
+ 
+arm-none-eabi-size  007Flag\ optimization.elf 
+arm-none-eabi-objdump -h -S 007Flag\ optimization.elf  > "007Flag optimization.list"
+   text	   data	    bss	    dec	    hex	filename
+   8944	     12	   2956	  11912	   2e88	007Flag optimization.elf
+Finished building: default.size.stdout
+ 
+Finished building: 007Flag optimization.list
+ 
+
+16:41:07 Build Finished. 0 errors, 0 warnings. (took 1s.16ms)
+

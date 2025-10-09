@@ -1,0 +1,18 @@
+07:58:16 **** Rebuild of configuration Debug for project Average ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'main':
+..\main.c:12:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  printf("Enter the first number:");
+  ^~~~~~
+..\main.c:12:2: warning: incompatible implicit declaration of built-in function 'printf'
+..\main.c:12:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+..\main.c:13:3: warning: implicit declaration of function 'scanf' [-Wimplicit-function-declaration]
+   scanf("%f", &num1);
+   ^~~~~
+..\main.c:13:3: warning: incompatible implicit declaration of built-in function 'scanf'
+..\main.c:13:3: note: include '<stdio.h>' or provide a declaration of 'scanf'
+gcc -o Average.exe main.o 
+
+07:58:18 Build Finished. 0 errors, 4 warnings. (took 2s.329ms)
+

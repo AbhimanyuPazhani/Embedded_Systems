@@ -1,0 +1,50 @@
+/*
+ * main.c
+ *
+ *  Created on: Oct 6, 2025
+ *      Author: ADMIN
+ */
+
+
+#include<stdio.h>
+#include<stdint.h>
+
+void wait_for_input(void)
+{
+    printf("\nPress Enter to exit...");
+    while (getchar() != '\n');  // clear input buffer
+    getchar();                  // wait for Enter
+}
+
+//Program 1
+
+//int main (void)
+//{
+//
+//	uint8_t data1 = 10;
+//	data1= 50;
+//	printf("The value of data1 is: %d", data1);
+//
+//	wait_for_input();
+//}
+
+
+//Program 2 for error
+
+//int main(void)
+//{
+//	uint8_t const data1 = 10;
+//	data1 = 50; //..\main.c:33:8: error: assignment of read-only variable 'data1'
+//	printf("The value of data1 is: %d", data1);
+//	wait_for_input();
+//}
+
+
+int main(void)
+{
+	uint8_t const data1 = 10;
+	uint8_t *ptr = (uint8_t *) &data1;
+	*ptr = 50;
+	printf("The value of data1 is: %d", data1);
+	wait_for_input();
+}
