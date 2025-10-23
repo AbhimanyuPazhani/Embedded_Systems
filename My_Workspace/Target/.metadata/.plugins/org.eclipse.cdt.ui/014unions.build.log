@@ -1,0 +1,6 @@
+10:42:11 **** Incremental Build of configuration Debug for project 014unions ****
+Info: Internal Builder is used for build
+gcc -o 014unions.exe main.o 
+
+10:42:11 Build Finished. 0 errors, 0 warnings. (took 447ms)
+

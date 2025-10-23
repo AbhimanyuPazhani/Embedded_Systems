@@ -1,0 +1,7 @@
+22:49:32 **** Incremental Build of configuration Debug for project 012structure exercise ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o "012structure exercise.exe" main.o 
+
+22:49:33 Build Finished. 0 errors, 0 warnings. (took 578ms)
+
