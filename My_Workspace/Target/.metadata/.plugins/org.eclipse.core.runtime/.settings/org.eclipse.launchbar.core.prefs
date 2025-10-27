@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.launchbar.core.descriptorType.default\:Average1.exe,org.eclipse.launchbar.core.descriptorType.default\:function.exe,org.eclipse.launchbar.core.descriptorType.default\:function_return.exe,org.eclipse.launchbar.core.descriptorType.default\:Lecture 79 Exercise.exe,org.eclipse.launchbar.core.descriptorType.default\:odd or even.exe,org.eclipse.launchbar.core.descriptorType.default\:pointer.exe,org.eclipse.launchbar.core.descriptorType.default\:Tax.exe,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:000Helloworld Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:000Add,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Led_on,org.eclipse.launchbar.core.descriptorType.default\:003Even numbers only.exe,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:005LED Toggle Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:007Flag optimization Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:009Button ISR Debug
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:Average1.exe,org.eclipse.launchbar.core.descriptorType.default\:function.exe,org.eclipse.launchbar.core.descriptorType.default\:function_return.exe,org.eclipse.launchbar.core.descriptorType.default\:Lecture 79 Exercise.exe,org.eclipse.launchbar.core.descriptorType.default\:odd or even.exe,org.eclipse.launchbar.core.descriptorType.default\:pointer.exe,org.eclipse.launchbar.core.descriptorType.default\:Tax.exe,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:000Helloworld Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:000Add,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Led_on,org.eclipse.launchbar.core.descriptorType.default\:003Even numbers only.exe,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:005LED Toggle Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:007Flag optimization Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:009Button ISR Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:015Led_toggle_Bitfields Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:016Keypad Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.debug.core.coreBuildDescriptorType\:Average/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:000Add/activeLaunchMode=debug
@@ -11,6 +11,8 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:005LED\ Toggle\ Debug/activeLau
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:005LED\ Toggle\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:007Flag\ optimization\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:009Button\ ISR\ Debug/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:015Led_toggle_Bitfields\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:016Keypad\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Led_on/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Led_on/activeLaunchTarget=null\:---
 org.eclipse.launchbar.core.descriptorType.default\:000Helloworld\ Debug/activeLaunchMode=debug

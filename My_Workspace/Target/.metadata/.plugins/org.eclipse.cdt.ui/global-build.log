@@ -1,14 +1,35 @@
-22:05:35 **** Incremental Build of configuration Debug for project 015Led_toggle_Bitfields ****
+14:11:57 **** Incremental Build of configuration Debug for project 016Keypad ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F722ZE -DSTM32 -DSTM32F7 -DSTM32F722ZETx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "015Led_toggle_Bitfields.elf" @"objects.list"   -mcpu=cortex-m7 -T"D:\Programs\Embedded C\Embedded_Systems\My_Workspace\Target\015Led_toggle_Bitfields\STM32F722ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="015Led_toggle_Bitfields.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: 015Led_toggle_Bitfields.elf
- 
-arm-none-eabi-size  015Led_toggle_Bitfields.elf 
-arm-none-eabi-objdump -h -S 015Led_toggle_Bitfields.elf  > "015Led_toggle_Bitfields.list"
+arm-none-eabi-size  016Keypad.elf 
    text	   data	    bss	    dec	    hex	filename
-    852	      0	   1568	   2420	    974	015Led_toggle_Bitfields.elf
+   4204	     92	   1900	   6196	   1834	016Keypad.elf
 Finished building: default.size.stdout
  
-Finished building: 015Led_toggle_Bitfields.list
+20:23:42 **** Incremental Build of configuration Debug for project 016Keypad ****
+make -j8 all 
+arm-none-eabi-size  016Keypad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4204	     92	   1900	   6196	   1834	016Keypad.elf
+Finished building: default.size.stdout
+ 
+20:24:04 **** Incremental Build of configuration Debug for project 016Keypad ****
+make -j8 all 
+arm-none-eabi-size  016Keypad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4204	     92	   1900	   6196	   1834	016Keypad.elf
+Finished building: default.size.stdout
+ 
+20:26:00 **** Incremental Build of configuration Debug for project 016Keypad ****
+make -j8 all 
+arm-none-eabi-size  016Keypad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4204	     92	   1900	   6196	   1834	016Keypad.elf
+Finished building: default.size.stdout
+ 
+20:28:26 **** Incremental Build of configuration Debug for project 016Keypad ****
+make -j8 all 
+arm-none-eabi-size  016Keypad.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4204	     92	   1900	   6196	   1834	016Keypad.elf
+Finished building: default.size.stdout
  
