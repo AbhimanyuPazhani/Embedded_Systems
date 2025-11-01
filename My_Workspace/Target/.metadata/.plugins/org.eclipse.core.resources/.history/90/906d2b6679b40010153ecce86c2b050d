@@ -1,0 +1,49 @@
+/*
+ * main.c
+ *
+ *  Created on: Oct 29, 2025
+ *      Author: ADMIN
+ */
+
+
+#include<stdio.h>
+#include<stdint.h>
+
+void wait_for_input(void)
+{
+    printf("\nPress Enter to exit...");
+    while (getchar() != '\n');  // clear input buffer
+    getchar();                  // wait for Enter
+}
+
+
+
+int main (void)
+{
+	uint32_t nItems1, nItems2;
+	printf("ARRAY SWAPPING PROGRAM\n");
+	printf("Enter the number of elements in Array 1 and Array 2:");
+	scanf("%d %d", &nItems1, &nItems2);
+if ((nItems1 <0)|| (nItmes2 <0))
+		{
+	printf("\nArray elements should not be negative");
+	wait_for_input();
+	return 0;
+		}
+
+int32_t Array1[nItems1];
+int32_t Array2[nItems2];
+
+for(uint32_t i =0; i<nItems1 ; i++)
+{
+	printf("Enter the Array 1 Elements:");
+	scanf("%d", &Array1[i]);
+
+}
+
+for(uint32_t i = 0; i<nItems2; i++)
+{
+	printf("\nEnter he Array 2 Elements:");
+	scanf("%d", &Array2[1]);
+}
+}

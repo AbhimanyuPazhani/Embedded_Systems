@@ -1,35 +1,3 @@
-14:11:57 **** Incremental Build of configuration Debug for project 016Keypad ****
-make -j8 all 
-arm-none-eabi-size  016Keypad.elf 
-   text	   data	    bss	    dec	    hex	filename
-   4204	     92	   1900	   6196	   1834	016Keypad.elf
-Finished building: default.size.stdout
- 
-20:23:42 **** Incremental Build of configuration Debug for project 016Keypad ****
-make -j8 all 
-arm-none-eabi-size  016Keypad.elf 
-   text	   data	    bss	    dec	    hex	filename
-   4204	     92	   1900	   6196	   1834	016Keypad.elf
-Finished building: default.size.stdout
- 
-20:24:04 **** Incremental Build of configuration Debug for project 016Keypad ****
-make -j8 all 
-arm-none-eabi-size  016Keypad.elf 
-   text	   data	    bss	    dec	    hex	filename
-   4204	     92	   1900	   6196	   1834	016Keypad.elf
-Finished building: default.size.stdout
- 
-20:26:00 **** Incremental Build of configuration Debug for project 016Keypad ****
-make -j8 all 
-arm-none-eabi-size  016Keypad.elf 
-   text	   data	    bss	    dec	    hex	filename
-   4204	     92	   1900	   6196	   1834	016Keypad.elf
-Finished building: default.size.stdout
- 
-20:28:26 **** Incremental Build of configuration Debug for project 016Keypad ****
-make -j8 all 
-arm-none-eabi-size  016Keypad.elf 
-   text	   data	    bss	    dec	    hex	filename
-   4204	     92	   1900	   6196	   1834	016Keypad.elf
-Finished building: default.size.stdout
- 
+16:53:46 **** Incremental Build of configuration Debug for project 018Array_Swapping ****
+Info: Internal Builder is used for build
+gcc -o 018Array_Swapping.exe main.o 

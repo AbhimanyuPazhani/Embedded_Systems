@@ -1,0 +1,22 @@
+/*
+ * main.c
+ *
+ *  Created on: Oct 28, 2025
+ *      Author: ADMIN
+ */
+
+
+#include <stdint.h>
+#include<stdio.h>
+
+int main (void)
+{
+	uint8_t someData[10] = {0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,};
+	for (uint32_t i =0; i<10; i++)
+	{
+		someData [i] = 0x33;
+
+	}
+	uint32_t nItems = sizeof(someData)/sizeof(uint8_t);
+
+}

@@ -1,0 +1,23 @@
+/*
+ * main.c
+ *
+ *  Created on: Oct 29, 2025
+ *      Author: ADMIN
+ */
+
+
+#include<stdio.h>
+#include<stdint.h>
+
+
+
+int main (void)
+{
+	uint32_t nItems1, nItems2;
+	printf("ARRAY SWAPPING PROGRAM\n");
+	printf("Enter the number of elements in Array 1 and Array 2:");
+	scanf("%d %d", &nItems1, &nItems2);
+
+
+
+}

@@ -1,0 +1,91 @@
+/*
+ * main.c
+ *
+ *  Created on: Oct 29, 2025
+ *      Author: ADMIN
+ */
+
+
+#include<stdio.h>
+#include<stdint.h>
+
+void wait_for_input(void);
+void display_array (int32_t *pArray1, uint32_t nItem);
+void swap_array (int32_t *Array1, int32_t *Array2, uint32_t nItems1, uint32_t nItems2);
+//void swap_arrays(int32_t *array1, int32_t *array2, uint32_t nitem1, uint32_t nitem2);
+
+int main (void)
+{
+	uint32_t nItems1, nItems2;
+	printf("ARRAY SWAPPING PROGRAM\n");
+	printf("Enter the number of elements in Array 1 and Array 2:");
+	scanf("%d %d", &nItems1, &nItems2);
+if ((nItems1 <0)|| (nItems2 <0))
+		{
+	printf("\nArray elements should not be negative");
+	wait_for_input();
+	return 0;
+		}
+
+int32_t Array1[nItems1];
+int32_t Array2[nItems2];
+
+for(uint32_t i =0; i<nItems1 ; i++)
+{
+	printf("Enter the Array 1 Elements:");
+	scanf("%d", &Array1[i]);
+
+}
+
+for(uint32_t i = 0; i<nItems2; i++)
+{
+	printf("\nEnter the Array 2 Elements:");
+	scanf("%d", &Array2[1]);
+}
+
+printf("Contents of arrays before swap \n");
+display_array (Array1, nItems1);
+printf("\n");
+
+display_array (Array2, nItems2);
+printf("\n");
+
+printf("Contents of arrays after swap \n");
+
+swap_array(Array1,Array2, nItems1,nItems2);
+
+display_array (Array1, nItems1);
+printf("\n");
+display_array (Array2, nItems2);
+printf("\n");
+
+}
+
+void wait_for_input(void)
+{
+    printf("\nPress Enter to exit...");
+    while (getchar() != '\n');  // clear input buffer
+    getchar();                  // wait for Enter
+}
+
+
+
+void display_array (int32_t *pArray1, uint32_t nItem)
+{
+	for (uint32_t i =0; i<nItem ; i++)
+	{
+		printf("%4d", *(pArray1+i));
+	}
+}
+
+void swap_array (int32_t *Array1, int32_t *Array2, uint32_t nitems1, uint32_t nitems2)
+{
+	uint32_t len = nitems1 < nitems2? nitems1 : nitems2;
+			for (uint32_t i = 0; i<len ; i++)
+			{
+				uint32_t temp = Array1[i];
+				Array1[i] = Array2[i];
+				Array2[i] =temp;
+			}
+}
+
