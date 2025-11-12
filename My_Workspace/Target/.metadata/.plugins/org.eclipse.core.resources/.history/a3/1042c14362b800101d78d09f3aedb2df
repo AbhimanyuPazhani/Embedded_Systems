@@ -1,0 +1,41 @@
+/*
+ * main.c
+ *
+ *  Created on: Nov 3, 2025
+ *      Author: ADMIN
+ */
+
+
+#include <stdio.h>
+#include <stdint.h>
+
+//Definition of a student record
+typedef struct
+{
+	int Rollnumber;
+	char Name[100];
+	char branch [50];
+	char dob [15];
+	int semester;
+
+}STUDENT_INFO_t;
+
+uint32_t const max_record = 10;
+STUDENT_INFO_t students[10];
+
+void display_all_records (STUDENT_INFO_t, *pBaseAddrofRecords,  max_record)
+{
+
+
+	for (uint32_t i=0; i<max_record ; i++)
+	{
+//		printf("Roll Number of the %d element of array = %d\n", i, (*pBaseAddrofRecords = i)->Rollnumber);
+		printf("Roll Number of the %d element of array = %d\n", i, pBaseAddrofRecords[i]->Rollnumber);
+	}
+}
+
+int main (void)
+{
+
+}
+

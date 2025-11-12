@@ -1,0 +1,30 @@
+/*
+ * main.c
+ *
+ *  Created on: Nov 4, 2025
+ *      Author: ADMIN
+ */
+
+
+#include<stdio.h>
+
+int main(void)
+
+{
+	float Radius;
+	float PI = 3.14159265;
+	float Area;
+
+	printf("Enter the Radius of the Circle:");
+	fflush(stdout);
+
+	scanf("%f", &Radius);
+	fflush(stdout);
+
+	Area = (PI * (Radius * Radius));
+	printf("\nThe Area of the Circle is : %.2f", Area);
+	fflush(stdout);
+
+	return 0;
+
+}

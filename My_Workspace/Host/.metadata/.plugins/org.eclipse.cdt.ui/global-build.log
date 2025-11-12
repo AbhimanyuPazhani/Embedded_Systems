@@ -1,0 +1,5 @@
+09:08:35 **** Incremental Build of configuration Debug for project 002 Average of Numbers ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o "002 Average of Numbers.exe" main.o 
+Info: Nothing to build for 002 Average of Numbers
