@@ -8,22 +8,47 @@
 
 #include <stdio.h>
 
+//1st way
+
+//int main()
+//{
+//	int i, j, n;
+//	printf("Enter the number:");
+//	scanf("%d", &n);
+//
+//	for (i=1; i<=n; i++)
+//	{
+//		for (j=n;j>=i; j--)
+//		{
+//			printf("*");
+//
+//		}
+//		printf("\n");
+//	}
+//	getchar();
+//		getchar();
+//
+//}
+
+
+//2nd way
 int main()
 {
-	int i, j, n;
+	int i,j, n;
 	printf("Enter the number:");
-	scanf("%d", &n);
+		scanf("%d", &n);
 
-	for (i=1; i<=n; i++)
-	{
-		for (j=n;j>=i; j--)
-		{
-			printf("*");
+		for (i=n; i>=1; i--)
+			{
+				for (j=1;j<=i; j++)
+				{
+					printf("*");
 
-		}
-		printf("\n");
-	}
-	getchar();
-	getchar();
+				}
+				printf("\n");
+			}
+			getchar();
+				getchar();
 
 }
+
