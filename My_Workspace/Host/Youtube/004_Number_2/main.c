@@ -27,3 +27,12 @@ int main()
 		getchar();
 
 }
+
+//Output
+//Enter the rows:6
+//123456
+//12345
+//1234
+//123
+//12
+//1
