@@ -32,3 +32,16 @@ int main(void)
 	getchar();
 
 }
+
+
+
+//output:
+//Enter the number of rows:8
+//       *
+//      **
+//     ***
+//    ****
+//   *****
+//  ******
+// *******
+//********
