@@ -37,41 +37,53 @@
 /* =========================================================
    Custom application entry (NO main logic here)
    ========================================================= */
-extern "C" void led_pwm_init(void)
+
+extern "C" void led_pwm_init(void);
+
+extern "C" void Reset_Handler(void)
 {
-    /* 1. Enable clocks */
-    RCC_AHB1ENR |= (1 << 0);   // GPIOA
-    RCC_APB1ENR |= (1 << 0);   // TIM2
 
-    /* 2. PA0 → Alternate Function (AF1 = TIM2_CH1) */
-    GPIOA_MODER &= ~(3U << 0);     // Clear MODER0
-    GPIOA_MODER |=  (2U << 0);     // AF mode
+	/* 1. Enable clocks */
+	    RCC_AHB1ENR |= (1 << 0);   // GPIOA
+	    RCC_APB1ENR |= (1 << 0);   // TIM2
 
-    GPIOA_AFRL &= ~(0xF << 0);     // Clear AFRL0
-    GPIOA_AFRL |=  (1U << 0);      // AF1
+	    /* 2. PA0 → Alternate Function (AF1 = TIM2_CH1) */
+	    GPIOA_MODER &= ~(3U << 0);     // Clear MODER0
+	    GPIOA_MODER |=  (2U << 0);     // AF mode
 
-    /* 3. Timer configuration
-       Assuming 16 MHz timer clock
-       16 MHz / 1600 = 10 kHz timer tick
-    */
-    TIM2_PSC = 1599;
-    TIM2_ARR = 4999;        // 10kHz / 5000 = 2 Hz
-    TIM2_CCR1 = 3750;       // 75% duty
+	    GPIOA_AFRL &= ~(0xF << 0);     // Clear AFRL0
+	    GPIOA_AFRL |=  (1U << 0);      // AF1
 
-    /* 4. PWM mode 1 on CH1 */
-    TIM2_CCMR1 &= ~(7U << 4);
-    TIM2_CCMR1 |=  (6U << 4);   // PWM mode 1
-    TIM2_CCMR1 |=  (1U << 3);   // Preload enable
+	    /* 3. Timer configuration
+	       Assuming 16 MHz timer clock
+	       16 MHz / 1600 = 10 kHz timer tick
+	    */
+	    TIM2_PSC = 1599;
+	    TIM2_ARR = 4999;        // 10kHz / 5000 = 2 Hz
+	    TIM2_CCR1 = 3750;       // 75% duty
 
-    /* 5. Enable output */
-    TIM2_CCER |= (1 << 0);
+	    /* 4. PWM mode 1 on CH1 */
+	    TIM2_CCMR1 &= ~(7U << 4);
+	    TIM2_CCMR1 |=  (6U << 4);   // PWM mode 1
+	    TIM2_CCMR1 |=  (1U << 3);   // Preload enable
 
-    /* 6. Enable counter */
-    TIM2_CR1 |= (1 << 7);   // ARPE
-    TIM2_CR1 |= (1 << 0);   // CEN
+	    /* 5. Enable output */
+	    TIM2_CCER |= (1 << 0);
 
-    while (1)
-    {
-        // PWM runs fully in hardware
-    }
+	    /* 6. Enable counter */
+	    TIM2_CR1 |= (1 << 7);   // ARPE
+	    TIM2_CR1 |= (1 << 0);   // CEN
+
+	    while (1)
+	    {
+	        // PWM runs fully in hardware
+	    }
+    // Optional: init .data / .bss if startup is removed
+    led_pwm_init();
+    while (1);
 }
+
+//extern "C" void led_pwm_init(void)
+//{
+//
+//}
