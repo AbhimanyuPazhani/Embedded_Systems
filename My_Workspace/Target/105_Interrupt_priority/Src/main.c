@@ -21,12 +21,26 @@
 
 uint32_t *pNVIC_IPRBase = (uint32_t*) 0xE000E400;
 uint32_t *pNVIC_ISERBase = (uint32_t*) 0xE000E100;
-uint32_t *pNVIC_IPSRBase = (uint32_t*) 0XE000E200;
+uint32_t *pNVIC_ISPRBase = (uint32_t*) 0XE000E200;
 #define IRQNO_TIM2 28
 #define IRQNO_I2C1 31
 
-void configure_priority_for_irqs(uint8_t irq_no)
+void configure_priority_for_irqs(uint8_t irq_no, uint8_t priority_value)
 {
+
+
+	//1. Find out iprx
+	uint8_t iprx = irq_no / 4;
+	uint32_t *ipr = pNVIC_IPRBase+iprx;
+	//2. position in iprx
+	uint8_t pos = (irq_no % 4)* 8;
+
+	//3. Configure the priority
+	*ipr &= ~(0xFF << pos); //clear
+
+	*ipr |= (priority_value << pos);
+
+
 
 }
 
@@ -34,10 +48,13 @@ int main(void)
 {
     /* Loop forever */
 	// 1. Lets configure the priority of the periperals
-	configure_priority_for_irqs();
+	configure_priority_for_irqs(IRQNO_TIM2, 0x80);
+	configure_priority_for_irqs(IRQNO_I2C1, 0x80);
 	// 2. Set the interrupt pending bit in the NVIC PR
-
+	*pNVIC_ISPRBase |= (1<<IRQNO_TIM2 );
 	// 3. Enable the IRQs in the NVIC ISER
+	*pNVIC_ISERBase |= (1<<IRQNO_I2C1 );
+	*pNVIC_ISERBase |= (1<<IRQNO_TIM2 );
 
 
 	for(;;);
@@ -46,14 +63,18 @@ int main(void)
 
 //isrs
 
-Void TIM2_IRQHandler(void)
+void TIM2_IRQHandler(void)
 {
 	printf("[TIM2_IRQHandler]\n");
+	*pNVIC_ISPRBase |= (1<<IRQNO_I2C1 );
+	while(1);
 
 }
 
-Void TIM2_IRQHandler(void)
+void I2C1_EV_IRQHandler(void)
 {
 	printf("[I2C1_EV_IRQHandler]\n");
+	*pNVIC_ISPRBase |= (1<<IRQNO_I2C1 );
+	while(1);
 
 }
