@@ -9,18 +9,12 @@
 
 int main()
 {
-	int x, y;
+	int x,y;
 	printf("Enter the 2 digit number:");
-	scanf("%d", &x);
+	scanf("%d",&x);
 
-	y = x%10;
-	printf("The ones position digit: %d", y);
+	y=x/10;
+	printf("The tens position number is: %d", y);
 	getchar();
 	getchar();
-
 }
-
-
-//Output:
-//Enter the 2 digit number:18
-//The ones position digit: 8
