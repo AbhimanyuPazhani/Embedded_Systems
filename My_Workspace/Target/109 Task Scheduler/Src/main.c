@@ -24,8 +24,10 @@
   //#warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
 void init_systick_timer(uint32_t tick_hz);
-
+void enable_processor_faults(void);
 void init_tasks_stack(void);
+__attribute__((naked))void switch_sp_to_psp(void);
+
 __attribute__((naked)) void init_scheduler_stack(uint32_t sched_top_of_stack);
 void task1_handler (void); //Task 1
 void task2_handler (void); //Task 2
@@ -35,15 +37,23 @@ void task4_handler (void); //Task 4
 uint32_t psp_of_tasks[MAX_TASKS] = {T1_STACK_START, T2_STACK_START, T3_STACK_START, T4_STACK_START};
 
 uint32_t task_handlers [MAX_TASKS];
+
+uint8_t current_task =0; //task is running
 int main(void)
 {
+
+	enable_processor_faults();
 	init_scheduler_stack(SCHED_STACK_START);
+
 	task_handlers[0] = (uint32_t) task1_handler;
 	task_handlers[1] = (uint32_t) task2_handler;
 	task_handlers[2] = (uint32_t) task3_handler;
 	task_handlers[3] = (uint32_t) task4_handler;
 	init_tasks_stack();
+
 	init_systick_timer(TICK_HZ);
+	switch_sp_to_psp();
+	task1_handler();
     /* Loop forever */
 	for(;;);
 }
@@ -136,4 +146,54 @@ void init_tasks_stack(void)
 void SysTick_Handler (void)
 {
 
+}
+
+
+uint32_t get_psp_value(void)
+{
+	return psp_of_tasks[current_task];
+}
+
+__attribute__((naked)) void switch_sp_to_psp(void)
+{
+	//1.Initialize the psp with Task1 stack start
+
+
+	//get the value of psp of current task
+	__asm volatile ("PUSH {LR}"); //preserve LR which connects back to main()
+	__asm volatile ("BL get_psp_value");
+	__asm volatile ("MSR PSP, R0"); //Initialize psp
+	__asm volatile ("POP {LR}"); //Pop back LR value
+
+	//2. Change SP to PSP using control registers
+	__asm volatile ("MOV R0, #0X02");
+	__asm volatile ("MSR CONTROL, R0");
+	__asm volatile ("BX LR");
+
+}
+
+void enable_processor_faults(void)
+{
+	uint32_t *pSHCSR = (uint32_t *) 0xE000ED24;
+	*pSHCSR |= (1<<16); //mem manage
+	*pSHCSR |= (1<<17); //bus fault
+	*pSHCSR |= (1<<18); //usage fault
+}
+
+//2. Implement the fault handlers
+void HardFault_Handler(void)
+{
+	printf("Exception: Hardfault\n");
+	while(1);
+
+}
+void MemManage_Handler(void)
+{
+	printf("Exception: MemManage\n");
+	while(1);
+}
+void BusFault_Handler(void)
+{
+	printf("Exception: BusFault\n");
+	while(1);
 }
