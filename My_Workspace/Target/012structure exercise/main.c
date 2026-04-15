@@ -83,5 +83,3 @@ The size of the struct is 10
  * we can able to reduce the size of the struct by using bit fields in the program on the struct.
  *
  * */
-
- */
