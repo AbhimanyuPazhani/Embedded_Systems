@@ -21,9 +21,7 @@
 #include "main.h"
 #include "led.h"
 
-#if !defined(__SOFT_FP__) && defined(__ARM_FP)
- // #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-#endif
+
 
 void idle_task(void);
 void task1_handler(void);
@@ -327,18 +325,18 @@ void SysTick_Handler(void)
 // Implement the fault handlers
 void HardFault_Handler(void)
 {
-	printf("Exception : Hardfault\n");
+	//printf("Exception : Hardfault\n");
 	while(1);
 }
 
 void MemManage_Handler(void)
 {
-	printf("Exception : MemManage\n");
+	//printf("Exception : MemManage\n");
 	while(1);
 }
 
 void BusFault_Handler(void)
 {
-	printf("Exception : BusFault\n");
+	//printf("Exception : BusFault\n");
 	while(1);
 }
