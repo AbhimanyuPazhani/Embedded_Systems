@@ -12,7 +12,7 @@ uint32_t vectors[] =  {
     SRAM_START,
     (uint32_t)&Reset_handler,
 
-};
+};__attribute__((section(".isr_vector")))
 
 void Reset_handler (void)
 {
