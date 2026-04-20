@@ -2,8 +2,8 @@ ENTRY(Reset_Handler)
 
 MEMORY
 {
-    FLASH (rx) : ORIGIN = 0x08000000, LENGTH = 512K
-    SRAM  (rwx): ORIGIN = 0x20000000, LENGTH = 128K
+    FLASH (rx) : ORIGIN = 0x08000000, LENGTH = 1M
+    SRAM  (rwx): ORIGIN = 0x20000000, LENGTH = 192K
 }
 
 __max_heap_size = 0x400; /* A symbol declaration . not a variable !!! */
@@ -15,16 +15,23 @@ SECTIONS
     {
         KEEP(*(.isr_vector))
         *(.text)
+        *(.text.*)
+        *(.init)
+        *(.fini)
         *(.rodata) 
+        *(.rodata.*) 
+        . = ALIGN (4);
         _etext = .;
        /* end_of_text = .; store the updated location counter value in to a symbol  'end_of_test' */
     } > FLASH AT > FLASH 
-
+   /* _la_data = LOADADDR (.data);*/
     .data :
     {
         _sdata = .;
        /* start_of_data = 0x20000000; Assign a value to a symbol 'start_of_data'  */
         *(.data)
+        *(.data.*)
+        . = ALIGN (4);
         _edata = .;
     } > SRAM AT > FLASH
 
@@ -33,7 +40,15 @@ SECTIONS
     .bss :
     {
         _sbss = .;
+        __bss_start__ = _sbss;
         *(.bss)
+        *(.bss.*)
+        *(COMMON)
+        . = ALIGN (4);
         _ebss = .;
+        __bss_end__ = _ebss;
+        . = ALIGN (4);
+        end = .;
+        __end__ = .;
     }> SRAM
 }
