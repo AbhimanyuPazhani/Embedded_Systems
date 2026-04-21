@@ -54,7 +54,7 @@ typedef struct
 TCB_t user_tasks[MAX_TASKS];
 
 //semihosting init function
-extern initialise_monitor_handles (void);
+extern void initialise_monitor_handles (void);
 
 int main(void)
 {

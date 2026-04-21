@@ -24,7 +24,7 @@ SECTIONS
         _etext = .;
        /* end_of_text = .; store the updated location counter value in to a symbol  'end_of_test' */
     } > FLASH AT > FLASH 
-   /* _la_data = LOADADDR (.data);*/
+    _la_data = LOADADDR (.data);
     .data :
     {
         _sdata = .;
@@ -35,7 +35,7 @@ SECTIONS
         _edata = .;
     } > SRAM AT > FLASH
 
-    _sidata = LOADADDR(.data);
+   
 
     .bss :
     {
