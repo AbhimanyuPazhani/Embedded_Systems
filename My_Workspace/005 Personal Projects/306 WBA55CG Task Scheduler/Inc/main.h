@@ -18,7 +18,7 @@
 
 /* CRITICAL FIX: Added missing 0 to match STM32 SRAM address 0x20000000 */
 #define SRAM_START          0x20000000U
-#define SIZE_SRAM           (192 * 1024)
+#define SIZE_SRAM           (64 * 1024) //SRAM in the WBA55 is split into two parts so I just mentioned small amount of region in SRAM1 here, because this is enough for this task.
 #define SRAM_END            ((SRAM_START) + (SIZE_SRAM))
 
 /* Task stacks grow downwards from the end of SRAM */
