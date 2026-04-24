@@ -62,7 +62,8 @@ int main(void)
 
 	init_tasks_stack();
 
-	led_init_all();
+    led_init_all();
+
 
 	init_systick_timer(TICK_HZ);
 
@@ -81,44 +82,48 @@ void idle_task(void)
 
 void task1_handler(void)
 {
-	while(1)
-	{
-		led_on(LED_GREEN);
-		task_delay(1000);
-		led_off(LED_GREEN);
-		task_delay(1000);
-	}
+    while(1)
+    {
+        led_on(LED_GREEN);
+        task_delay(1000);
+        led_off(LED_GREEN);
+        task_delay(1000);
+    }
 }
+
 void task2_handler(void)
 {
-	while(1)
-	{
-		led_on(LED_ORANGE);
-		task_delay(500);
-		led_off(LED_ORANGE);
-		task_delay(500);
-	}
+    while(1)
+    {
+        led_on(LED_BLUE);
+        task_delay(500);
+        led_off(LED_BLUE);
+        task_delay(500);
+    }
 }
+
 void task3_handler(void)
 {
-	while(1)
-	{
-		led_on(LED_BLUE);
-		task_delay(250);
-		led_off(LED_BLUE);
-		task_delay(250);
-	}
+    while(1)
+    {
+        led_on(LED_RED);
+        task_delay(250);
+        led_off(LED_RED);
+        task_delay(250);
+    }
 }
+
+
 void task4_handler(void)
 {
 	while(1)
 	{
-		led_on(LED_RED);
-		task_delay(125);
-		led_off(LED_RED);
-		task_delay(125);
+		 // dummy load task
+
+		for(volatile int i = 0; i < 100000; i++);
 	}
 }
+
 
 void init_systick_timer(uint32_t tick_hz)
 {

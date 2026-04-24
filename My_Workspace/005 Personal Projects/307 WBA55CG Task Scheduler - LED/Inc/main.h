@@ -15,7 +15,7 @@
 #define SIZE_SCHED_STACK    1024U
 
 #define SRAM_START	        0x20000000U
-#define SIZE_SRAM	        ((128) * (1024))
+#define SIZE_SRAM	        (64 * 1024)
 #define SRAM_END	        ((SRAM_START) + (SIZE_SRAM))
 
 #define T1_STACK_START      SRAM_END
