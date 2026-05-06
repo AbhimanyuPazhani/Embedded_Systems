@@ -7,6 +7,7 @@
 
 
 #include <stdio.h>
+void wait_for_input(void);
 
 int main() {
     int n, sum = 0;
@@ -30,5 +31,26 @@ int main() {
     // Output result
     printf("%d\n", sum);
 
-    return 0;
+    wait_for_input();
 }
+
+void wait_for_input()
+{
+	printf("\n\nPress Enter for EXIT");
+	while (getchar()!='\n');
+	getchar();
+}
+
+
+
+
+//OUTPUT:
+//4
+//4
+//5
+//6
+//7
+//22
+//
+//
+//Press Enter for EXIT
