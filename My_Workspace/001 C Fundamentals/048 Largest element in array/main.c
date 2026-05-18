@@ -34,7 +34,7 @@ int function (int arr[], int num)
 	int i,largest;
 	largest = arr[0];
 
-	for(i=0; i<num; i++)
+	for(i=1; i<num; i++)
 	{
 	if (arr[i]>largest)
 	{
