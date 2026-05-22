@@ -61,20 +61,16 @@ static void MX_SPI1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-extern UART_HandleTypeDef hlpuart1;
-
-#ifdef __GNUC__
-#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
-#else
-#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
-#endif
-
-PUTCHAR_PROTOTYPE {
+/**
+ * Redirect printf to LPUART1.
+ * With this, every printf("...") call sends text to your serial terminal.
+ */
+int __io_putchar(int ch)
+{
     HAL_UART_Transmit(&hlpuart1, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
     return ch;
 }
 
-ICM20948_Data_t imu_data;
 /* USER CODE END 0 */
 
 /**
@@ -85,7 +81,8 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+	ICM_Data   sensor_data;   /* All sensor readings go here */
+	uint8_t    who_am_i;      /* For verifying the sensor ID */
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -112,13 +109,21 @@ int main(void)
   MX_LPUART1_UART_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-  printf("Starting ICM20948 IMU Test...\r\n");
 
-    if (ICM_Init(&hspi1)) {
-        printf("ICM20948 Initialized Successfully!\r\n");
-    } else {
-        printf("ICM20948 Initialization Failed. Check wiring.\r\n");
-    }
+  printf("\r\n===== ICM-20948 SPI Driver =====\r\n");
+  printf("Initialising sensor...\r\n");
+
+  /* Verify WHO_AM_I */
+  who_am_i = ICM20948_WhoAmI();
+  printf("WHO_AM_I = 0x%02X (expected 0xEA)\r\n", who_am_i);
+
+  /* Full initialisation */
+  if (ICM20948_Init() != ICM_OK) {
+      printf("FATAL: Sensor init failed! Check wiring.\r\n");
+      while (1); /* halt */
+  }
+
+  printf("Starting sensor loop...\r\n\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -129,13 +134,32 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
   }
-    ICM_ReadData(&hspi1, &imu_data);
+  /* Read all sensors at once */
+  ICM20948_ReadAll(&sensor_data);
 
-        printf("Accel: X:%6d Y:%6d Z:%6d | Gyro: X:%6d Y:%6d Z:%6d\r\n",
-               imu_data.accel_x, imu_data.accel_y, imu_data.accel_z,
-               imu_data.gyro_x, imu_data.gyro_y, imu_data.gyro_z);
+  /* Print accelerometer */
+  printf("ACCEL: X=%.3f  Y=%.3f  Z=%.3f  [g]\r\n",
+         sensor_data.accel_g.x,
+         sensor_data.accel_g.y,
+         sensor_data.accel_g.z);
 
-        HAL_Delay(100); // 10Hz update rate for terminal readability
+  /* Print gyroscope */
+  printf("GYRO:  X=%.2f  Y=%.2f  Z=%.2f  [dps]\r\n",
+         sensor_data.gyro_dps.x,
+         sensor_data.gyro_dps.y,
+         sensor_data.gyro_dps.z);
+
+  /* Print magnetometer */
+  printf("MAG:   X=%.2f  Y=%.2f  Z=%.2f  [uT]\r\n",
+         sensor_data.mag_uT.x,
+         sensor_data.mag_uT.y,
+         sensor_data.mag_uT.z);
+
+  /* Print temperature */
+  printf("TEMP:  %.2f C\r\n", sensor_data.temp_C);
+
+  printf("---\r\n");
+  HAL_Delay(100);  /* 10 Hz output rate — adjust as needed */
   /* USER CODE END 3 */
 }
 
@@ -281,7 +305,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_HIGH;
   hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
