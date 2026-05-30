@@ -2987,6 +2987,7 @@ BaseType_t xSwitchRequired = pdFALSE;
 /*-----------------------------------------------------------*/
 
 void vTaskSwitchContext( void )
+
 {
 	if( uxSchedulerSuspended != ( UBaseType_t ) pdFALSE )
 	{

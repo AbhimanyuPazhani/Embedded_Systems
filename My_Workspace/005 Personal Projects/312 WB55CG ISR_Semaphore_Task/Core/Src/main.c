@@ -15,6 +15,45 @@
   *
   ******************************************************************************
   */
+
+
+/*
+What We Built
+Hardware
+
+STM32WB55CG Dongle
+Green LED (LD1)
+Blue LED (LD2)
+Push Button on PA10
+
+RTOS Components
+
+Task (BlueTask)
+Binary Semaphore
+External Interrupt (EXTI)
+
+
+Execution Flow
+
+Button Press
+     ↓
+PA10 Interrupt Occurs
+     ↓
+HAL_GPIO_EXTI_Callback()
+     ↓
+xSemaphoreGiveFromISR()
+     ↓
+Semaphore becomes available
+     ↓
+BlueTask wakes up
+     ↓
+xSemaphoreTake() succeeds
+     ↓
+Blue LED toggles
+
+*/
+
+
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -284,8 +323,8 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : PA10 */
   GPIO_InitStruct.Pin = GPIO_PIN_10;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
@@ -304,6 +343,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
   if(GPIO_Pin == GPIO_PIN_10)
   {
+    HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
+
     xSemaphoreGiveFromISR(mySemaphore, &xHigherPriorityTaskWoken);
 
     portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
@@ -360,9 +401,9 @@ void StartTask03(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	  xSemaphoreTake(mySemaphore, portMAX_DELAY);
+    xSemaphoreTake(mySemaphore, portMAX_DELAY);
 
-	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+    HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
   }
   /* USER CODE END StartTask03 */
 }
@@ -419,3 +460,28 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+
+/*
+Semaphore is only for notification.
+
+Example:
+
+Button pressed
+ADC completed
+UART completed
+DMA completed
+
+No data needed.
+
+Only notification.
+
+
+A semaphore is used for task synchronization.
+In my STM32WB55 FreeRTOS project,
+an external interrupt from a button released a binary semaphore using xSemaphoreGiveFromISR().
+A task blocked on xSemaphoreTake() woke up and toggled an LED.
+This avoids polling and allows efficient event-driven execution.
+
+
+
+*/
