@@ -7,6 +7,13 @@
 
 #include <stdio.h>
 
+void wait_for_input (void)
+{
+	printf("\nPress enter to EXIT");
+	while (getchar()!= '\n');
+	getchar();
+}
+
 // Comparison function for ascending order
 int ascending(int a, int b)
 {
@@ -60,5 +67,5 @@ int main()
     printf("Descending: ");
     display(arr, n);
 
-    return 0;
+    wait_for_input ();
 }
