@@ -69,3 +69,10 @@ int main()
 
     wait_for_input ();
 }
+
+//
+//OUTPUT:
+//Ascending: 1 2 5 7 9
+//Descending: 9 7 5 2 1
+//
+//Press enter to EXIT
