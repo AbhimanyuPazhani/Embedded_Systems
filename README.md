@@ -3,6 +3,30 @@
 This repository contains my hands-on work, experiments, and mini-projects in embedded systems development using STM32 microcontrollers. The content is primarily based on structured learning from FastBit Academy courses, along with my own implementations and explorations.
 
 ---
+Repository Roadmap
+My_Workspace
+│
+├── 001_C_Fundamentals
+│   └── Core C programming concepts and algorithms
+│
+├── 002_Microcontroller_Embedded_C_Programming
+│   └── Register-level STM32 peripheral programming
+│
+├── 003_Embedded_Systems_ARM_Cortex_M3_M4
+│   └── Cortex-M architecture, exceptions, stacks, and RTOS concepts
+│
+├── 004_Bare_Metal_Projects
+│   └── STM32 development without HAL or IDE-generated code
+│
+├── 005_Personal_Projects
+│   └── Custom projects across STM32 families (F4, F7, WB, etc.)
+│
+├── BLE_Stack
+│   └── BLE stack updates, FUS binaries, and wireless resources
+│
+└── Documents
+    └── Reference manuals, datasheets, and supporting materials
+---
 
 ## Development Platforms
 
