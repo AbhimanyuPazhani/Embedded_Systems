@@ -5,24 +5,17 @@ This repository contains my hands-on work, experiments, and mini-projects in emb
 ---
 ## Learning Progression
 
-
-001 C Fundamentals
-        │
-        ▼
-002 Microcontroller Embedded C Programming
-        │
-        ▼
-003 Embedded Systems Programming on ARM Cortex-M3/M4
-        │
-        ▼
-004 Bare Metal Projects
-        │
-        ▼
-005 Personal Projects
-        │
-        ▼
-BLE Stack
-
+- 001 C Fundamentals
+  - ↓
+- 002 Microcontroller Embedded C Programming
+  - ↓
+- 003 Embedded Systems Programming on ARM Cortex-M3/M4
+  - ↓
+- 004 Bare Metal Projects
+  - ↓
+- 005 Personal Projects
+  - ↓
+- BLE Stack
 ---
 
 ## Development Platforms
