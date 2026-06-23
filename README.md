@@ -5,7 +5,7 @@ This repository contains my hands-on work, experiments, and mini-projects in emb
 ---
 ## Learning Progression
 
-```text
+
 001 C Fundamentals
         │
         ▼
