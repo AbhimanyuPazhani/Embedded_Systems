@@ -3,6 +3,20 @@
 This repository contains my hands-on work, experiments, and mini-projects in embedded systems development using STM32 microcontrollers. The content is primarily based on structured learning from FastBit Academy courses, along with my own implementations and explorations.
 
 ---
+## Learning Progression
+
+- 001 C Fundamentals
+  - ↓
+- 002 Microcontroller Embedded C Programming
+  - ↓
+- 003 Embedded Systems Programming on ARM Cortex-M3/M4
+  - ↓
+- 004 Bare Metal Projects
+  - ↓
+- 005 Personal Projects
+  - ↓
+- BLE Stack
+---
 
 ## Development Platforms
 
