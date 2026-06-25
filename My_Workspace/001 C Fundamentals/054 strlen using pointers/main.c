@@ -49,3 +49,6 @@ size_t my_strlen(const char *str) {
     // 4. Return the difference between the final memory address and the starting memory address
     return (size_t)(p - str);
 }
+
+
+
