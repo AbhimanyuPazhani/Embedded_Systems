@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <stddef.h>
 
+void wait_for_input (void);
+
 // Function prototype
 size_t my_strlen(const char *str);
 
@@ -48,7 +50,14 @@ size_t my_strlen(const char *str) {
 
     // 4. Return the difference between the final memory address and the starting memory address
     return (size_t)(p - str);
+     wait_for_input();
 }
 
 
 
+void wait_for_input (void)
+{
+	printf("\nPress enter to EXIT");
+	while (getchar()!= '\n');
+	getchar();
+}
