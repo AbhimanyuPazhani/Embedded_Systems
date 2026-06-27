@@ -30,7 +30,8 @@ int main() {
     // Testing the NULL pointer safely
         printf("Length of NULL pointer: %lu\n", (unsigned long)my_strlen(string4));
 
-    return 0;
+
+    wait_for_input();
 }
 
 // Function definition using only pointers
